@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 200 800">
+    <defs>
+        <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#072e2c"/>
+            <stop offset="35%" stop-color="#0e5a54"/>
+            <stop offset="65%" stop-color="#0e5a54"/>
+            <stop offset="100%" stop-color="#072e2c"/>
+        </linearGradient>
+        <linearGradient id="pipeBorderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#031c1a"/>
+            <stop offset="50%" stop-color="#0a3a35"/>
+            <stop offset="100%" stop-color="#031c1a"/>
+        </linearGradient>
+        <linearGradient id="pipeShineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e6f7ff" stop-opacity="0.35"/>
+            <stop offset="80%" stop-color="#e6f7ff" stop-opacity="0"/>
+        </linearGradient>
+
+        <pattern id="pipeTexture" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(18)">
+            <rect width="20" height="20" fill="#0f6a62" opacity="0.12"/>
+            <path d="M0,2 H20 M0,6 H20 M0,10 H20 M0,14 H20 M0,18 H20"
+                  stroke="#133f3a" stroke-width="0.6" opacity="0.35"/>
+            <path d="M2,3 l3,-1 M9,12 l4,-1 M13,6 l2,-1 M6,17 l3,-1" 
+                  stroke="#86fff3" stroke-opacity="0.15" stroke-width="0.4"/>
+            <path d="M4,9 l2,1 M12,15 l3,1 M17,8 l2,1" 
+                  stroke="#002521" stroke-opacity="0.2" stroke-width="0.4"/>
+        </pattern>
+
+        <filter id="pipeShadow" x="-15%" y="-5%" width="130%" height="120%">
+            <feDropShadow dx="0" dy="3" stdDeviation="2" flood-opacity="0.3"/>
+        </filter>
+
+        <linearGradient id="grimeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#000814" stop-opacity="0.12"/>
+            <stop offset="50%" stop-color="#000814" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000814" stop-opacity="0.18"/>
+        </linearGradient>
+        <linearGradient id="edgeGlowLeft" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#7ff7ff" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#7ff7ff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="edgeGlowRight" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="#7ff7ff" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#7ff7ff" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="rivetGrad" cx="40%" cy="40%" r="70%">
+            <stop offset="0%" stop-color="#9fdde0"/>
+            <stop offset="60%" stop-color="#376d68"/>
+            <stop offset="100%" stop-color="#0b2422"/>
+        </radialGradient>
+    </defs>
+
+    <g filter="url(#pipeShadow)">
+        <rect x="30" y="0" width="140" height="680" rx="8"
+              fill="url(#pipeGradient)"
+              stroke="url(#pipeBorderGradient)" stroke-width="8"/>
+        <rect x="30" y="0" width="140" height="680" fill="url(#pipeTexture)" opacity="0.35"/>
+        <rect x="50" y="0" width="15" height="680" fill="url(#pipeShineGradient)"/>
+        <rect x="30" y="0" width="140" height="680" fill="none" stroke="url(#edgeGlowLeft)" stroke-width="3"/>
+        <rect x="30" y="0" width="140" height="680" fill="none" stroke="url(#edgeGlowRight)" stroke-width="3"/>
+        <path d="M100,10 V670" stroke="#042f2c" stroke-width="2" opacity="0.45"/>
+        <path d="M102,10 V670" stroke="#a2fff7" stroke-width="0.6" opacity="0.25"/>
+        <rect x="30" y="0" width="140" height="680" fill="url(#grimeGrad)"/>
+    </g>
+
+    <g filter="url(#pipeShadow)">
+        <rect x="0" y="680" width="200" height="100" rx="12"
+              fill="url(#pipeGradient)"
+              stroke="url(#pipeBorderGradient)" stroke-width="8"/>
+        <rect x="0" y="680" width="200" height="100" fill="url(#pipeTexture)" opacity="0.22"/>
+        <rect x="25" y="755" width="150" height="10" rx="5" fill="#e6f7ff" opacity="0.12"/>
+    </g>
+
+    <ellipse cx="100" cy="680" rx="92" ry="18" fill="#0b2b29" opacity="0.9"/>
+    <ellipse cx="100" cy="682" rx="92" ry="18" fill="#000" opacity="0.18"/>
+
+    <g opacity="0.9">
+        <g transform="translate(20,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(45,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(70,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(95,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(120,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(145,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(170,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+        <g transform="translate(195,708)">
+            <circle cx="0" cy="0" r="3" fill="url(#rivetGrad)"/>
+            <circle cx="0" cy="-1.2" r="1" fill="#e6f7ff" opacity="0.5"/>
+        </g>
+    </g>
+</svg>

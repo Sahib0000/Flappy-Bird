@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1920 200">
+    <defs>
+        <linearGradient id="groundGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#15322f"/>
+            <stop offset="50%" stop-color="#112825"/>
+            <stop offset="100%" stop-color="#0a1c1a"/>
+        </linearGradient>
+
+        <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0d5a4f"/>
+            <stop offset="100%" stop-color="#0a3f38"/>
+        </linearGradient>
+
+        <pattern id="grassPattern" patternUnits="userSpaceOnUse" width="30" height="12">
+            <path d="M0,12 L5,0 L10,12 L15,0 L20,12 L25,0 L30,12"
+                  stroke="#0e6b5e" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+        </pattern>
+
+        <pattern id="groundTexture" patternUnits="userSpaceOnUse" width="40" height="40">
+            <rect width="40" height="40" fill="#112825"/>
+            <circle cx="8" cy="8" r="3" fill="#0b2a27" opacity="0.5"/>
+            <circle cx="25" cy="15" r="2.5" fill="#0b2a27" opacity="0.45"/>
+            <circle cx="15" cy="28" r="2" fill="#0b2a27" opacity="0.45"/>
+            <circle cx="30" cy="30" r="1.2" fill="#7ff7ff" opacity="0.12"/>
+            <circle cx="18" cy="12" r="1" fill="#7ff7ff" opacity="0.12"/>
+        </pattern>
+
+        <filter id="groundShadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+        </filter>
+
+        <filter id="groundNoise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
+            <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0.15
+        0 0 0 0 0.12
+        0 0 0 0.06 0"/>
+            <feBlend in="SourceGraphic" mode="multiply"/>
+        </filter>
+
+        <linearGradient id="grassRim" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9cf9ff" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#9cf9ff" stop-opacity="0"/>
+        </linearGradient>
+
+        <linearGradient id="rutTint" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#061513" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#061513" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+
+    <rect x="0" y="0" width="1920" height="200" fill="url(#groundGradient)"/>
+    <rect x="0" y="0" width="1920" height="200" fill="url(#groundTexture)" opacity="0.35"/>
+    <rect x="0" y="0" width="1920" height="200" fill="transparent" filter="url(#groundNoise)"/>
+
+    <rect x="0" y="0" width="1920" height="25" fill="url(#grassGradient)" filter="url(#groundShadow)"/>
+    <rect x="0" y="0" width="1920" height="10" fill="url(#grassRim)"/>
+
+    <rect x="0" y="0" width="1920" height="12" fill="url(#grassPattern)"/>
+
+    <g fill="#d0ebe6" opacity="0.22" filter="url(#groundShadow)">
+        <ellipse cx="150" cy="150" rx="15" ry="10"/>
+        <ellipse cx="550" cy="140" rx="10" ry="8"/>
+        <ellipse cx="950" cy="155" rx="14" ry="9"/>
+        <ellipse cx="1350" cy="145" rx="12" ry="8"/>
+        <ellipse cx="1750" cy="150" rx="15" ry="10"/>
+    </g>
+
+    <g stroke="url(#rutTint)" stroke-width="2" opacity="0.55">
+        <path d="M380,132 C395,140 410,150 420,160" fill="none"/>
+        <path d="M780,138 C795,148 810,158 820,170" fill="none"/>
+        <path d="M1180,130 C1195,140 1210,150 1220,162" fill="none"/>
+        <path d="M1580,135 C1595,145 1610,155 1620,168" fill="none"/>
+    </g>
+
+    <g>
+        <circle cx="110" cy="8" r="1.3" fill="#c7fbff" opacity="0.0">
+            <animate attributeName="opacity" values="0;0.7;0" dur="4s" begin="0s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="480" cy="6" r="1.1" fill="#c7fbff" opacity="0.0">
+            <animate attributeName="opacity" values="0;0.6;0" dur="5s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="920" cy="7" r="1.2" fill="#c7fbff" opacity="0.0">
+            <animate attributeName="opacity" values="0;0.7;0" dur="4.5s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1320" cy="5" r="1.1" fill="#c7fbff" opacity="0.0">
+            <animate attributeName="opacity" values="0;0.6;0" dur="5.2s" begin="1.3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1720" cy="7" r="1.2" fill="#c7fbff" opacity="0.0">
+            <animate attributeName="opacity" values="0;0.7;0" dur="4.7s" begin="0.2s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+</svg>

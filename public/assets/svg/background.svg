@@ -1,0 +1,425 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 2560 1080">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#160b2f;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#24124e;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#1a1242;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0c0a20;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f2f5f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c8d2d8;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="hillGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#163b30;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0e251f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hillGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b23;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#091b16;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="cloudShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="1.5" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="sunGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="auroraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4dffb2" stop-opacity="0.0"/>
+      <stop offset="15%" stop-color="#4dffb2" stop-opacity="0.38"/>
+      <stop offset="45%" stop-color="#79ffd6" stop-opacity="0.24"/>
+      <stop offset="70%" stop-color="#9dfcff" stop-opacity="0.32"/>
+      <stop offset="85%" stop-color="#b87bff" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#b87bff" stop-opacity="0.0"/>
+    </linearGradient>
+
+    <linearGradient id="fogGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c0c9d1" stop-opacity="0.09" />
+      <stop offset="100%" stop-color="#c0c9d1" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Ground texturing -->
+    <filter id="hillGrain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0.6
+        0 0 0 0 0.4
+        0 0 0 0.08 0" />
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+
+    <pattern id="grassPattern" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M2,16 L4,10 L6,16 M8,16 L9,11 L10,16 M12,16 L14,9 L16,16" stroke="#1b4a3a" stroke-width="1" stroke-linecap="round" opacity="0.2" fill="none"/>
+    </pattern>
+
+    <linearGradient id="rockGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#20332c"/>
+      <stop offset="100%" stop-color="#0e1d18"/>
+    </linearGradient>
+
+    <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d7ffe8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#b1ffd8" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Lake -->
+    <linearGradient id="lakeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2d54" />
+      <stop offset="100%" stop-color="#0c172e" />
+    </linearGradient>
+    <linearGradient id="lakeMoon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dff6ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#dff6ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER: Background sky -->
+  <rect class="layer" data-depth="0.00" width="100%" height="100%" fill="url(#skyGradient)"/>
+
+  <!-- LAYER: Milky Way haze -->
+  <ellipse class="layer" data-depth="0.02" cx="720" cy="220" rx="900" ry="380" fill="url(#milkyHaze)" />
+
+  <!-- LAYER: Aurora (loop-perfect, 0↔2560) -->
+  <path class="layer" data-depth="0.04"
+        d="M0,200 C320,200 640,150 960,200 C1280,250 1600,160 1920,200 C2240,240 2560,200 2560,200
+           L2560,260 C2240,260 1920,220 1600,260 C1280,300 960,220 640,270 C320,320 0,260 0,260 Z"
+        fill="url(#auroraGrad)" opacity="0.28">
+    <animate attributeName="d" dur="14s" repeatCount="indefinite"
+             values="
+        M0,200 C320,200 640,150 960,200 C1280,250 1600,160 1920,200 C2240,240 2560,200 2560,200 L2560,260 C2240,260 1920,220 1600,260 C1280,300 960,220 640,270 C320,320 0,260 0,260 Z;
+        M0,190 C320,190 660,170 960,180 C1306,210 1573,180 1920,190 C2240,200 2560,190 2560,190 L2560,255 C2240,255 1920,225 1600,255 C1280,285 960,215 640,260 C320,305 0,255 0,255 Z;
+        M0,200 C320,200 640,150 960,200 C1280,250 1600,160 1920,200 C2240,240 2560,200 2560,200 L2560,260 C2240,260 1920,220 1600,260 C1280,300 960,220 640,270 C320,320 0,260 0,260 Z" />
+  </path>
+
+  <!-- LAYER: Moon (uses sunGradient + sunGlow) -->
+  <g class="layer" data-depth="0.03">
+    <circle cx="1600" cy="200" r="80" fill="url(#sunGradient)" filter="url(#sunGlow)" />
+    <circle cx="1600" cy="200" r="64" fill="#f2f5f7" opacity="0.55" />
+    <g fill="#c8d2d8" opacity="0.5">
+      <circle cx="1570" cy="185" r="10"/>
+      <circle cx="1635" cy="205" r="12"/>
+      <circle cx="1605" cy="165" r="7"/>
+      <circle cx="1588" cy="225" r="6"/>
+      <circle cx="1620" cy="175" r="8"/>
+    </g>
+    <circle cx="1600" cy="200" r="82" fill="none" stroke="#d7f7ff" stroke-opacity="0.25" stroke-width="3"/>
+  </g>
+
+  <!-- LAYER: Stars -->
+  <g class="layer" data-depth="0.01" id="stars" fill="#f0f6ff" filter="url(#starGlow)">
+    <g opacity="0.9">
+      <circle cx="120" cy="80" r="1.2"/><circle cx="200" cy="60" r="1.4"/><circle cx="280" cy="140" r="1.1"/>
+      <circle cx="360" cy="50" r="1.3"/><circle cx="420" cy="200" r="1.2"/><circle cx="520" cy="120" r="1.0"/>
+      <circle cx="600" cy="60" r="1.3"/><circle cx="680" cy="180" r="1.1"/><circle cx="760" cy="100" r="1.0"/>
+      <circle cx="840" cy="40" r="1.5"/><circle cx="920" cy="160" r="1.1"/><circle cx="1000" cy="70" r="1.2"/>
+      <circle cx="1080" cy="130" r="1.0"/><circle cx="1160" cy="50" r="1.4"/><circle cx="1240" cy="170" r="1.1"/>
+      <circle cx="1320" cy="90" r="1.2"/><circle cx="1400" cy="40" r="1.3"/><circle cx="1480" cy="160" r="1.1"/>
+      <circle cx="1560" cy="90" r="1.0"/><circle cx="1680" cy="60" r="1.3"/><circle cx="1760" cy="150" r="1.2"/>
+      <circle cx="1840" cy="80" r="1.1"/>
+    </g>
+    <g>
+      <circle cx="300" cy="120" r="1.8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="740" cy="90" r="2"><animate attributeName="opacity" values="0.3;1;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
+      <circle cx="1120" cy="70" r="2"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="1540" cy="110" r="1.8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.8s" repeatCount="indefinite"/></circle>
+    </g>
+    <g opacity="0.9">
+      <path d="M0,0 L40,0" stroke="#f0f6ff" stroke-width="2" stroke-linecap="round">
+        <animateMotion dur="2.6s" repeatCount="indefinite" path="M1400,120 C1300,160 1200,90 1100,130" />
+        <animate attributeName="opacity" values="0;1;0" dur="2.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+
+  <!-- LAYER: Distant mountains (loop-perfect at y=620) -->
+  <g class="layer" data-depth="0.08">
+    <path d="M0,620
+             C320,620 480,520 640,620
+             S960,720 1280,620
+             S1600,520 1920,620
+             S2240,620 2560,620
+             L2560,1080 L0,1080 Z"
+          fill="#14202a" opacity="0.95"/>
+    <path d="M0,620
+             C320,620 480,520 640,620
+             S960,720 1280,620
+             S1600,520 1920,620
+             S2240,620 2560,620"
+          fill="none" stroke="#a88bff" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+    <path d="M200,600 l40,-20 30,15 -30,15 z
+             M1060,560 l38,-18 26,14 -28,14 z
+             M2060,600 l42,-20 28,16 -32,14 z"
+          fill="#d7e6ff" opacity="0.15"/>
+  </g>
+
+  <!-- LAYER: Night clouds -->
+  <g class="layer" data-depth="0.06" fill="#e9e7ff" opacity="0.2" filter="url(#cloudShadow)">
+    <ellipse cx="200" cy="150" rx="70" ry="40" />
+    <ellipse cx="250" cy="120" rx="60" ry="35" />
+    <ellipse cx="300" cy="150" rx="70" ry="40" />
+    <ellipse cx="250" cy="170" rx="90" ry="40" />
+    <ellipse cx="600" cy="100" rx="90" ry="50" />
+    <ellipse cx="670" cy="80" rx="70" ry="40" />
+    <ellipse cx="730" cy="100" rx="80" ry="45" />
+    <ellipse cx="670" cy="130" rx="100" ry="50" />
+    <ellipse cx="1100" cy="200" rx="80" ry="45" />
+    <ellipse cx="1160" cy="180" rx="60" ry="35" />
+    <ellipse cx="1220" cy="200" rx="70" ry="40" />
+    <ellipse cx="1160" cy="220" rx="90" ry="45" />
+    <ellipse cx="1500" cy="120" rx="70" ry="40" />
+    <ellipse cx="1550" cy="100" rx="60" ry="35" />
+    <ellipse cx="1600" cy="120" rx="70" ry="40" />
+    <ellipse cx="1550" cy="140" rx="90" ry="40" />
+    <ellipse cx="400" cy="250" rx="60" ry="35" />
+    <ellipse cx="450" cy="230" rx="50" ry="30" />
+    <ellipse cx="500" cy="250" rx="60" ry="35" />
+    <ellipse cx="450" cy="270" rx="80" ry="35" />
+    <ellipse cx="900" cy="180" rx="75" ry="40" />
+    <ellipse cx="950" cy="160" rx="65" ry="35" />
+    <ellipse cx="1000" cy="180" rx="75" ry="40" />
+    <ellipse cx="950" cy="200" rx="95" ry="40" />
+    <ellipse cx="1300" cy="150" rx="65" ry="35" />
+    <ellipse cx="1350" cy="130" rx="55" ry="30" />
+    <ellipse cx="1400" cy="150" rx="65" ry="35" />
+    <ellipse cx="1350" cy="170" rx="85" ry="35" />
+  </g>
+
+  <!-- LAYER: Bats -->
+  <g class="layer" data-depth="0.10" fill="none" stroke="#c6b7ff" stroke-opacity="0.25" stroke-width="3">
+    <path d="M300,300 Q320,280 340,300 Q360,280 380,300" />
+    <path d="M320,320 Q340,300 360,320 Q380,300 400,320" />
+    <path d="M1200,250 Q1220,230 1240,250 Q1260,230 1280,250" />
+    <path d="M1500,350 Q1520,330 1540,350 Q1560,330 1580,350" />
+    <path d="M800,280 Q820,260 840,280 Q860,260 880,280" />
+  </g>
+
+  <path class="layer" data-depth="0.18"
+        d="M0,800
+           C320,800 560,680 960,800
+           S1600,920 1920,800
+           S2240,800 2560,800
+           L2560,1080 L0,1080 Z"
+        fill="url(#hillGradient1)" filter="url(#hillGrain)"/>
+  <path class="layer" data-depth="0.22"
+        d="M0,850
+           C320,850 560,730 960,850
+           S1600,970 1920,850
+           S2240,850 2560,850
+           L2560,1080 L0,1080 Z"
+        fill="url(#hillGradient2)" filter="url(#hillGrain)"/>
+
+  <g class="layer" data-depth="0.20" opacity="0.65">
+    <path d="M0,790
+             C320,790 560,690 960,790
+             S1600,890 1920,790
+             S2240,790 2560,790"
+          fill="none" stroke="#caffe9" stroke-opacity="0.18" stroke-width="6" stroke-linecap="round"/>
+    <path d="M0,840
+             C320,840 560,740 960,840
+             S1600,940 1920,840
+             S2240,840 2560,840"
+          fill="none" stroke="#caffe9" stroke-opacity="0.12" stroke-width="5" stroke-linecap="round"/>
+
+    <path d="M0,860
+             C400,860 800,840 1280,860
+             S2160,860 2560,860"
+          fill="none" stroke="#85e8c9" stroke-opacity="0.09" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,900
+             C400,900 800,885 1280,900
+             S2160,900 2560,900"
+          fill="none" stroke="#85e8c9" stroke-opacity="0.06" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g class="layer" data-depth="0.24" opacity="0.55">
+    <path d="M0,820
+             C320,820 640,840 960,820
+             S1600,800 1920,820
+             S2240,820 2560,820
+             L2560,900 L0,900 Z"
+          fill="url(#fogGrad)"/>
+    <path d="M0,880
+             C320,880 640,900 960,880
+             S1600,860 1920,880
+             S2240,880 2560,880
+             L2560,940 L0,940 Z"
+          fill="url(#fogGrad)" opacity="0.75"/>
+  </g>
+
+  <g class="layer" data-depth="0.23" opacity="0.25">
+    <path d="M0,800 C320,800 560,680 960,800 S1600,920 1920,800 S2240,800 2560,800 L2560,1080 L0,1080 Z" fill="url(#grassPattern)"/>
+    <path d="M0,850 C320,850 560,730 960,850 S1600,970 1920,850 S2240,850 2560,850 L2560,1080 L0,1080 Z" fill="url(#grassPattern)"/>
+  </g>
+
+  <!-- LAYER: Winding path (loop-perfect tangents) -->
+  <g class="layer" data-depth="0.25">
+    <path d="M0,975
+             C320,975 640,905 960,895
+             S2240,975 2560,975"
+          fill="none" stroke="url(#pathGrad)" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+    <path d="M0,975
+             C320,975 640,905 960,895
+             S2240,975 2560,975"
+          fill="none" stroke="#0a1b16" stroke-opacity="0.35" stroke-width="2"/>
+  </g>
+
+  <g class="layer" data-depth="0.26">
+    <ellipse cx="720" cy="900" rx="18" ry="10" fill="url(#rockGrad)" opacity="0.9"/>
+    <path d="M708,893 Q720,885 734,894" fill="none" stroke="#9ed8c5" stroke-opacity="0.18" stroke-width="2"/>
+    <ellipse cx="1120" cy="910" rx="22" ry="12" fill="url(#rockGrad)" opacity="0.9"/>
+    <path d="M1106,902 Q1120,895 1136,904" fill="none" stroke="#9ed8c5" stroke-opacity="0.18" stroke-width="2"/>
+    <ellipse cx="460" cy="930" rx="14" ry="8" fill="url(#rockGrad)" opacity="0.9"/>
+    <path d="M450,924 Q460,918 470,926" fill="none" stroke="#9ed8c5" stroke-opacity="0.18" stroke-width="2"/>
+    <g fill="#0c221c">
+      <path d="M520,915 c6,-10 16,-10 22,0 c-8,2 -14,6 -22,0z"/>
+      <path d="M1280,900 c8,-14 22,-14 30,0 c-10,3 -18,8 -30,0z"/>
+      <path d="M1520,920 c7,-12 18,-12 25,0 c-9,2 -16,6 -25,0z"/>
+    </g>
+    <g fill="none" stroke="#caffe9" stroke-opacity="0.18" stroke-width="2">
+      <path d="M520,915 c6,-10 16,-10 22,0"/>
+      <path d="M1280,900 c8,-14 22,-14 30,0"/>
+      <path d="M1520,920 c7,-12 18,-12 25,0"/>
+    </g>
+  </g>
+
+  <g class="layer" data-depth="0.27" stroke="#1b4a3a" stroke-width="2" stroke-linecap="round" opacity="0.45">
+    <path d="M610,900 L614,884 M616,900 L618,886 M622,900 L626,883"/>
+    <path d="M860,895 L864,880 M866,895 L868,882 M872,896 L875,882"/>
+    <path d="M1040,905 L1044,888 M1046,905 L1048,890 M1051,906 L1054,891"/>
+    <path d="M1320,965 L1324,948 M1326,965 L1328,950 M1331,966 L1334,950"/>
+  </g>
+
+  <g class="layer" data-depth="0.28">
+    <g transform="translate(1900,820)">
+      <rect x="-30" y="-20" width="60" height="40" fill="#0b1713"/>
+      <path d="M-36,-20 L0,-48 L36,-20 Z" fill="#0b1713"/>
+      <rect x="8" y="-5" width="14" height="25" fill="#0a1411"/>
+      <rect x="-20" y="-10" width="16" height="14" fill="#ffd98a" opacity="0.9" rx="2" ry="2"/>
+      <rect x="-20" y="-10" width="16" height="14" fill="#ffd98a" opacity="0.45" rx="2" ry="2">
+        <animate attributeName="opacity" values="0.45;0.75;0.45" dur="2.6s" repeatCount="indefinite"/>
+      </rect>
+      <g opacity="0.5">
+        <ellipse cx="20" cy="-55" rx="6" ry="4" fill="#cfd8dc">
+          <animate attributeName="cy" values="-55;-75" dur="3.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0" dur="3.5s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="28" cy="-65" rx="8" ry="5" fill="#cfd8dc">
+          <animate attributeName="cy" values="-65;-95" dur="3.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0" dur="3.8s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+    </g>
+  </g>
+
+  <g class="layer" data-depth="0.26" opacity="0.9">
+    <path d="M180,940 C260,905 420,895 560,905 C700,915 760,935 820,950 C740,970 600,980 480,975 C340,968 240,960 180,940 Z"
+          fill="url(#lakeGrad)"/>
+    <path d="M360,930 C420,930 500,935 560,940 C620,945 660,950 700,953"
+          stroke="url(#lakeMoon)" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <path d="M220,950 C300,942 420,946 540,955" stroke="#9ad0ff" stroke-opacity="0.15" stroke-width="3" fill="none"/>
+    <path d="M260,965 C340,958 420,960 520,966" stroke="#9ad0ff" stroke-opacity="0.12" stroke-width="2" fill="none"/>
+  </g>
+
+  <g class="layer" data-depth="0.28" stroke="#0b1713" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <path d="M1880,860 L1940,860"/>
+    <path d="M1890,842 L1890,862 M1910,842 L1910,862 M1930,842 L1930,862"/>
+    <g stroke="#bfffe8" stroke-width="2" opacity="0.18">
+      <path d="M1880,860 L1940,860"/>
+      <path d="M1890,842 L1890,862 M1910,842 L1910,862 M1930,842 L1930,862"/>
+    </g>
+  </g>
+
+  <g class="layer" data-depth="0.26" fill="#0c1612">
+    <circle cx="200" cy="780" r="20" />
+    <circle cx="500" cy="760" r="25" />
+    <circle cx="800" cy="790" r="18" />
+    <circle cx="1100" cy="770" r="22" />
+    <circle cx="1300" cy="785" r="20" />
+    <circle cx="1600" cy="765" r="25" />
+    <circle cx="1850" cy="780" r="18" />
+    <circle cx="2100" cy="770" r="22" />
+    <circle cx="2350" cy="785" r="20" />
+  </g>
+
+  <g class="layer" data-depth="0.28">
+    <g stroke="#232323" stroke-width="5">
+      <line x1="200" y1="780" x2="200" y2="810" />
+      <line x1="500" y1="760" x2="500" y2="800" />
+      <line x1="800" y1="790" x2="800" y2="820" />
+      <line x1="1100" y1="770" x2="1100" y2="810" />
+      <line x1="1300" y1="785" x2="1300" y2="825" />
+      <line x1="1600" y1="765" x2="1600" y2="805" />
+      <line x1="1850" y1="780" x2="1850" y2="820" />
+      <line x1="2100" y1="770" x2="2100" y2="810" />
+      <line x1="2350" y1="785" x2="2350" y2="825" />
+    </g>
+    <g stroke="#a98cff" stroke-opacity="0.18" stroke-width="2">
+      <line x1="203" y1="780" x2="203" y2="810" />
+      <line x1="503" y1="760" x2="503" y2="800" />
+      <line x1="803" y1="790" x2="803" y2="820" />
+      <line x1="1103" y1="770" x2="1103" y2="810" />
+      <line x1="1303" y1="785" x2="1303" y2="825" />
+      <line x1="1603" y1="765" x2="1603" y2="805" />
+      <line x1="1853" y1="780" x2="1853" y2="820" />
+      <line x1="2103" y1="770" x2="2103" y2="810" />
+      <line x1="2353" y1="785" x2="2353" y2="825" />
+    </g>
+  </g>
+
+  <!-- LAYER: Village lights -->
+  <g class="layer" data-depth="0.30" fill="#ffd98a" opacity="0.8">
+    <circle cx="260" cy="860" r="2"/><circle cx="320" cy="845" r="1.8"/><circle cx="420" cy="865" r="2.2"/>
+    <circle cx="680" cy="880" r="1.8"/><circle cx="740" cy="860" r="2.2"/><circle cx="820" cy="875" r="1.6"/>
+    <circle cx="1120" cy="870" r="2.1"/><circle cx="1180" cy="855" r="1.9"/><circle cx="1240" cy="880" r="1.7"/>
+    <circle cx="1540" cy="865" r="2.0"/><circle cx="1600" cy="850" r="1.8"/><circle cx="1660" cy="870" r="2.2"/>
+    <circle cx="1980" cy="875" r="1.7"/><circle cx="2040" cy="860" r="2.1"/><circle cx="2100" cy="880" r="1.9"/>
+  </g>
+
+  <!-- LAYER: Fireflies -->
+  <g class="layer" data-depth="0.34">
+    <circle cx="300" cy="930" r="2" fill="#e6ff8a">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="930;925;930" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="880" cy="950" r="2" fill="#e6ff8a">
+      <animate attributeName="opacity" values="0.2;0.9;0.2" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="950;945;950" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1440" cy="940" r="2" fill="#e6ff8a">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="940;935;940" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="2040" cy="960" r="2" fill="#e6ff8a">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.6s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="960;955;960" dur="3.1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
