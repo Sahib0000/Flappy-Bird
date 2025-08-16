@@ -1,4 +1,4 @@
-# Flappy Bird React
+# Flappy Bird React (`School project`)
 
 A React-based implementation of the classic Flappy Bird game.
 
